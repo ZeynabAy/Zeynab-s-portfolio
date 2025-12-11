@@ -6,6 +6,11 @@
     --accent: #6C63FF;
     --radius: 12px;
     --max-width: 1100px;
+    --color-blue: #3B82F6;
+    --color-green: #10B981;
+    --color-pink: #EC4899;
+    --color-amber: #F59E0B;
+    --color-purple: #8B5CF6;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -115,3 +120,53 @@ a:focus-visible{outline:3px solid rgba(108,99,255,0.18);outline-offset:3px}
 
 /* Small helpers for other sections */
 section{margin-top:28px}
+
+/* About page sections */
+.section{
+    margin-top:48px;
+}
+.section h2{
+    font-size:clamp(1.5rem, 2vw, 2rem);
+    margin-bottom:24px;
+    color:var(--text);
+}
+
+/* Color / accent cards (glassmorphism) */
+.cards-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap:20px;
+}
+.accent-card{
+    padding:28px;
+    background:linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(250,251,252,1) 100%);
+    border-radius:12px;
+    backdrop-filter:blur(6px);
+    box-shadow: 0 8px 32px rgba(15,23,36,0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.accent-card:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 14px 40px rgba(15,23,36,0.08);
+}
+.accent-card h3{
+    font-size:1.05rem;
+    margin-bottom:10px;
+}
+.accent-card p{
+    color:var(--muted);
+    font-size:0.95rem;
+    line-height:1.6;
+}
+
+/* Subtle highlight box used for hobbies */
+.highlight-box{
+    padding:28px;
+    background:linear-gradient(90deg, rgba(108,99,255,0.04), rgba(108,99,255,0.02));
+    border-left:5px solid rgba(108,99,255,0.14);
+    border-radius:10px;
+}
+.highlight-box p{color:var(--text);font-size:1rem;line-height:1.7}
+
+/* CTA Section styling */
+.cta-large{font-size:1.05rem;padding:14px 28px;border-radius:10px;margin-top:12px}
