@@ -1,5 +1,5 @@
 :root{
-    --bg: #FAFBFC;
+    --bg: #c6fbd9;
     --card: #FFFFFF;
     --text: #0F1724;
     --muted: #64748B;
@@ -23,6 +23,33 @@ body{
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
     line-height:1.5;
+}
+
+/* Pattern background for about page - lighter complementary gradient */
+body.pattern-bg{
+    background: radial-gradient(
+        120% 120% at 100% 0%,
+        rgba(219, 234, 254, 1) 0%,
+        rgba(230, 224, 246, 1) 25%,
+        rgba(237, 218, 245, 1) 40%,
+        rgba(226, 197, 255, 1) 60%,
+        rgba(209, 169, 255, 1) 85%,
+        rgba(196, 140, 255, 1) 100%
+    );
+}
+
+/* Radial gradient background for home page */
+body.gradient-bg{
+    background: radial-gradient(
+        125% 125% at -2% 101%,
+        rgba(245, 87, 2, 1) 10.5%,
+        rgba(245, 120, 2, 1) 16%,
+        rgba(245, 140, 2, 1) 17.5%,
+        rgba(245, 170, 100, 1) 25%,
+        rgba(238, 174, 202, 1) 40%,
+        rgba(202, 179, 214, 1) 65%,
+        rgba(148, 201, 233, 1) 100%
+    );
 }
 
 /* Layout container */
@@ -59,10 +86,11 @@ nav a:hover{color:var(--text)}
 /* Hero */
 .hero{
     display:grid;
-    grid-template-columns: 1fr 360px;
-    gap:40px;
+    grid-template-columns: 1fr 1fr;
+    gap:48px;
     align-items:center;
     background:transparent;
+    padding:40px 0;
 }
 .card{
     background:var(--card);
@@ -98,12 +126,20 @@ nav a:hover{color:var(--text)}
     display:flex;
     align-items:center;
     justify-content:center;
+    min-height:450px;
 }
 .hero-visual img{
     width:100%;
-    max-width:320px;
-    border-radius:10px;
+    max-width:500px;
+    height:auto;
+    border-radius:16px;
     object-fit:cover;
+    box-shadow: 0 20px 60px rgba(15,23,36,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hero-visual img:hover{
+    transform: scale(1.05);
+    box-shadow: 0 25px 70px rgba(15,23,36,0.25);
 }
 
 /* Utility */
@@ -111,7 +147,8 @@ nav a:hover{color:var(--text)}
 
 /* Responsive */
 @media (max-width:900px){
-    .hero{grid-template-columns:1fr; gap:20px}
+    .hero{grid-template-columns:1fr; gap:32px; padding:24px 0}
+    .hero-visual{min-height:350px}
     .hero-visual img{max-width:100%}
 }
 
@@ -127,8 +164,20 @@ section{margin-top:28px}
 }
 .section h2{
     font-size:clamp(1.5rem, 2vw, 2rem);
-    margin-bottom:24px;
+    margin-bottom:28px;
     color:var(--text);
+    position:relative;
+    padding-bottom:12px;
+}
+.section h2::after{
+    content:'';
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:60px;
+    height:4px;
+    background:linear-gradient(90deg, #8B5CF6, #C489FF);
+    border-radius:2px;
 }
 
 /* Color / accent cards (glassmorphism) */
@@ -139,15 +188,26 @@ section{margin-top:28px}
 }
 .accent-card{
     padding:28px;
-    background:linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(250,251,252,1) 100%);
-    border-radius:12px;
-    backdrop-filter:blur(6px);
-    box-shadow: 0 8px 32px rgba(15,23,36,0.06);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    background:rgba(255, 255, 255, 0.95);
+    border-radius:14px;
+    box-shadow: 0 10px 30px rgba(88, 28, 135, 0.08);
+    transition: all 0.3s ease;
+    border:1px solid rgba(226, 197, 255, 0.3);
+    position:relative;
+    overflow:hidden;
+}
+.accent-card::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:3px;
+    background:linear-gradient(90deg, #8B5CF6, #C489FF);
 }
 .accent-card:hover{
-    transform: translateY(-6px);
-    box-shadow: 0 14px 40px rgba(15,23,36,0.08);
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(88, 28, 135, 0.15);
 }
 .accent-card h3{
     font-size:1.05rem;
